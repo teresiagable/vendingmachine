@@ -1,5 +1,9 @@
 package se.lexicon.teresia.vendingmachine;
 
+/**
+ * @author deltagare
+ *
+ */
 public abstract class Product {
 	int id;
 	String name;
@@ -29,8 +33,14 @@ public abstract class Product {
 	}
 
 	
+	/** 
+	 * @return a string with information
+	 */
 	public abstract String Examine();
 
+	/**
+	 * @return a string with info about how to use the product
+	 */
 	public abstract String Use();
 	
 }

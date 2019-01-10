@@ -13,38 +13,38 @@ public class VendingMachine implements I_VendingMachine{
 	@Override
 	public int insertMoney(int money) {
 		myMoney.addAmount(money);
-		// TODO Auto-generated method stub
 		return myMoney.getAmount();
 	}
 
 	@Override
 	public int getAmount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return myMoney.getAmount();
 	}
 
 	@Override
-	public Denomination[] getChange() {
-		myMoney.getChange();
-		// TODO Auto-generated method stub
-		return null;
+	public int[] getChange() {
+		
+		
+		return myMoney.getChange();
 	}
 
 	@Override
-	public Product[] listProducts() {
-		// TODO Auto-generated method stub
-		return null;
+	public void listProducts() {
+		for (Product product : theProducts) {
+		 System.out.println(product.getId()+" "+product.toString());
+		}
+		
 	}
 
 	@Override
-	public boolean purchase(Product thing) {
+	public boolean purchase(Product thing, MoneyPool theMoney) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
 	public String examine(Product thing) {
-		// TODO Auto-generated method stub
+		thing.Examine();
 		return null;
 	}
 

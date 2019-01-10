@@ -16,9 +16,9 @@ public interface I_VendingMachine {
 	/**
 	 * @return and array of ints 
 	 */
-	Denomination[] getChange();
+	int[] getChange();
 	
-	Product[] listProducts();
+	void listProducts();
 	boolean purchase(Product thing, MoneyPool money);
 	String examine(Product thing);
 	String use(Product thing);

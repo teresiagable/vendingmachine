@@ -13,19 +13,22 @@ public class Candy extends Product {
 
 	@Override
 	public String Examine() {
-		return this.toString();
+		String productData = name +" "+ taste +" "+ weight +" g "+ price +" kr "; 
+		
+		return productData;
 	}
 
-	@Override
-	public void Purchase() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	@Override
 	public String Use() {
 		// TODO Auto-generated method stub
 		return "Drinking "+ super.name;
+	}
+
+	
+	@Override
+	public String toString() {
+		return "Candy " +name+" "+ weight + " g :"+price+" kr ";
 	} 
 	
 
