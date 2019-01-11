@@ -43,16 +43,18 @@ public class App {
 	}
 
 	private static void leave(VendingMachine theVM) {
-		if(theVM.getAmount()>0) cashOut(theVM);
+		if (theVM.getAmount() > 0)
+			cashOut(theVM);
 		System.out.println("You leave the vending machine");
 		System.exit(0);
 	}
 
 	private static void cashOut(VendingMachine theVM) {
 		int cash = theVM.getAmount();
-		 
+
 		for (Denomination d : Denomination.values()) {
-			if (d.countCoins(cash)>0) System.out.println(d.countCoins(cash)+ " st "+ d.getValue()+" kr") ;
+			if (d.countCoins(cash) > 0)
+				System.out.println(d.countCoins(cash) + " st " + d.getValue() + " kr");
 		}
 		System.out.println();
 
@@ -146,12 +148,12 @@ public class App {
 
 	private static Product[] getCurrentProducts() {
 		Product[] stuff = new Product[6];
-		stuff[0] = new Drink(0, "Coca Cola", 15, 300, true, "Cola taste");
-		stuff[1] = new Drink(1, "Fanta", 12, 300, true, "Orange");
-		stuff[2] = new Drink(2, "Water", 12, 500, false, "Aloe Vera");
-		stuff[3] = new Candy(3, "Ahlgrens Bilar", 17, 150, "Sweet");
-		stuff[4] = new Candy(4, "Godisrem", 5, 25, "Sour");
-		stuff[5] = new Candy(5, "Pingvinstång", 5, 10, "Likkerish and mint");
+		stuff[0] = new Drink(1, "Coca Cola", 15, 300, true, "Cola taste");
+		stuff[1] = new Drink(2, "Fanta", 12, 300, true, "Orange");
+		stuff[2] = new Drink(3, "Water", 12, 500, false, "Aloe Vera");
+		stuff[3] = new Candy(4, "Ahlgrens Bilar", 17, 150, "Sweet");
+		stuff[4] = new Candy(5, "Godisrem", 5, 25, "Sour");
+		stuff[5] = new Candy(6, "Pingvinstång", 5, 10, "Likkerish and mint");
 		return stuff;
 	}
 }
