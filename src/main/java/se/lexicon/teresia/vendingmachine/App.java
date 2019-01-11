@@ -17,44 +17,78 @@ public class App {
 
 		while (continueShopping) {
 
-			int menuChoice = printAndGetMenuChoise();
+			int menuChoice = printAndGetMenuChoice(theVM);
 
 			switch (menuChoice) {
 			case 1:
 				insertMoney(theVM);
 				break;
 			case 2:
-				doPurchase();
+				Product prod = doPurchase(theVM);
+				if (prod != null)
+					doUse(prod);
 				break;
 			case 3:
-				doExamine();
+				doExamine(theVM);
 				break;
 			case 4:
-				// use the product just bought
+				cashOut(theVM);
+			case 5:
+				leave(theVM);
 				break;
 			default:
-
 				break;
 			}
 		}
-		int amount = scanner.nextInt();
-		System.out.println(amount);
-		theVM.insertMoney(amount);
-//        for (int coins : theVM.getChange()) {
-//			d.getValue();
-//		}
-		// continueShopping = continueOrNot();
+	}
+
+	private static void leave(VendingMachine theVM) {
+		if(theVM.getAmount()>0) cashOut(theVM);
+		System.out.println("You leave the vending machine");
+		System.exit(0);
+	}
+
+	private static void cashOut(VendingMachine theVM) {
+		int cash = theVM.getAmount();
+		 
+		for (Denomination d : Denomination.values()) {
+			if (d.countCoins(cash)>0) System.out.println(d.countCoins(cash)+ " st "+ d.getValue()+" kr") ;
+		}
+		System.out.println();
 
 	}
 
-	private static void doExamine() {
-		// TODO Auto-generated method stub
+	private static void doUse(Product prod) {
+		System.out.println("Do you want to open the " + prod.getName() + "?");
+		boolean use = readYesNoFromUser();
+		if (use)
+			System.out.println(prod.Use());
+	}
+
+	private static void doExamine(VendingMachine theVM) {
+		System.out.println("Enter the number of the product you want to examine:");
+
+		Product theP = getProductById(theVM.theProducts, readIntegerfromUser());
+		System.out.println(theP.Examine());
 
 	}
 
-	private static void doPurchase() {
-		// TODO Auto-generated method stub
+	private static Product doPurchase(VendingMachine theVM) {
+		System.out.println("Enter the number of the product you want to purchase:");
 
+		Product theP = getProductById(theVM.theProducts, readIntegerfromUser());
+
+		boolean succeeded = theVM.purchase(theP);
+		return (succeeded ? theP : null);
+
+	}
+
+	private static Product getProductById(Product[] theProducts, int id) {
+		for (Product product : theProducts) {
+			if (product.getId() == id)
+				return product;
+		}
+		return null;
 	}
 
 	private static void insertMoney(VendingMachine theVM) {
@@ -62,16 +96,15 @@ public class App {
 		theVM.insertMoney(readIntegerfromUser());
 	}
 
-	private static int printAndGetMenuChoise(VendingMachine theVM) {
-
+	private static int printAndGetMenuChoice(VendingMachine theVM) {
 
 		System.out.println("Press the number for your choice:");
 		System.out.println("1. Insert money");
 		System.out.println("2. Purchase");
 		System.out.println("3. Examine");
-		System.out.println("4. Use");
+		System.out.println("4. Cash out");
 		System.out.println("5. Leave");
-		System.out.println("Money inserted: "+theVM.getAmount());
+		System.out.println("Money inserted: " + theVM.getAmount());
 
 		return readIntegerfromUser();
 
@@ -88,14 +121,37 @@ public class App {
 		}
 	}
 
+	/**
+	 * @return false if user has entered N or n, else true
+	 */
+	private static boolean readYesNoFromUser() {
+		String input = scanner.nextLine();
+		boolean returnValue = true;
+		switch (input) {
+		case "Y":
+		case "y":
+			returnValue = true;
+			break;
+		case "N":
+		case "n":
+			returnValue = false;
+			break;
+		default:
+			System.out.println("I'll take that as a YES");
+			returnValue = true;
+			break;
+		}
+		return returnValue;
+	}
+
 	private static Product[] getCurrentProducts() {
 		Product[] stuff = new Product[6];
 		stuff[0] = new Drink(0, "Coca Cola", 15, 300, true, "Cola taste");
-		stuff[1] = new Drink(1, "Fanta", 15, 300, true, "Orange");
-		stuff[2] = new Drink(2, "Sprite", 15, 300, true, "Lemon");
-		stuff[3] = new Candy(3, "Ahlgrens Bilar", 15, 300, "Sweet");
-		stuff[4] = new Candy(4, "Godisrem", 15, 300, "Sour");
-		stuff[5] = new Candy(5, "Pingvinstång", 15, 300, "Likkerish and mint");
+		stuff[1] = new Drink(1, "Fanta", 12, 300, true, "Orange");
+		stuff[2] = new Drink(2, "Water", 12, 500, false, "Aloe Vera");
+		stuff[3] = new Candy(3, "Ahlgrens Bilar", 17, 150, "Sweet");
+		stuff[4] = new Candy(4, "Godisrem", 5, 25, "Sour");
+		stuff[5] = new Candy(5, "Pingvinstång", 5, 10, "Likkerish and mint");
 		return stuff;
 	}
 }

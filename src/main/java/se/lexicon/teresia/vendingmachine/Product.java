@@ -1,13 +1,9 @@
 package se.lexicon.teresia.vendingmachine;
 
-/**
- * @author deltagare
- *
- */
 public abstract class Product {
-	int id;
-	String name;
-	int price;
+	private int id;
+	private String name;
+	private int price;
 	
 	public Product(int id, String name, int price) {
 		super();

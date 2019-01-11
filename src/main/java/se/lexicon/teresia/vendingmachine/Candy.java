@@ -13,7 +13,7 @@ public class Candy extends Product {
 
 	@Override
 	public String Examine() {
-		String productData = name +" "+ taste +" "+ weight +" g "+ price +" kr "; 
+		String productData = super.getName() +" "+ taste +" "+ weight +" g "+ super.getPrice() +" kr "; 
 		
 		return productData;
 	}
@@ -21,14 +21,13 @@ public class Candy extends Product {
 
 	@Override
 	public String Use() {
-		// TODO Auto-generated method stub
-		return "Drinking "+ super.name;
+		return "Eating "+ super.getName();
 	}
 
 	
 	@Override
 	public String toString() {
-		return "Candy " +name+" "+ weight + " g :"+price+" kr ";
+		return "Candy " +super.getName()+" "+ weight + " g :"+super.getPrice()+" kr ";
 	} 
 	
 

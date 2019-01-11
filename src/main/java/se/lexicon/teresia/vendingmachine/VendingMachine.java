@@ -1,9 +1,9 @@
 package se.lexicon.teresia.vendingmachine;
 
-public class VendingMachine implements I_VendingMachine{
-	MoneyPool myMoney = new MoneyPool();
-	Product[] theProducts = new Product[0];
-	
+public class VendingMachine implements I_VendingMachine {
+	public MoneyPool myMoney = new MoneyPool();
+	public Product[] theProducts = new Product[0];
+
 	public VendingMachine(MoneyPool myMoney, Product[] theProducts) {
 		super();
 		this.myMoney = myMoney;
@@ -22,24 +22,26 @@ public class VendingMachine implements I_VendingMachine{
 	}
 
 	@Override
-	public int[] getChange() {
-		
-		
-		return myMoney.getChange();
-	}
-
-	@Override
 	public void listProducts() {
 		for (Product product : theProducts) {
-		 System.out.println(product.getId()+" "+product.toString());
+			System.out.println(product.getId() + " " + product.toString());
 		}
-		
+
 	}
 
 	@Override
-	public boolean purchase(Product thing, MoneyPool theMoney) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean purchase(Product prod) {
+		int price = prod.getPrice();
+
+		if (this.myMoney.getAmount() >= price) {
+			//ask the to the machine to release the product into the "fetch box"
+			
+			//update the moneypool
+			this.myMoney.removeAmount(price);
+			return true;
+		} else
+			System.out.println("Not enought money. Insert more.");
+			return false;
 	}
 
 	@Override

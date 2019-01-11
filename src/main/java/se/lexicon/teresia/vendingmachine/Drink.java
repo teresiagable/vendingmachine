@@ -14,7 +14,7 @@ public class Drink extends Product{
 
 	@Override
 	public String Examine() {
-		String productData = name +" "+ taste +" "+ (carbonated?" carbonated ":"")+ volume/10 +" cl "+ price +" kr "; 
+		String productData = super.getName() +" "+ taste +" "+ (carbonated?" carbonated ":"")+ volume/10 +" cl "+ super.getPrice() +" kr "; 
 		
 		return productData;
 	}
@@ -22,13 +22,12 @@ public class Drink extends Product{
 
 	@Override
 	public String Use() {
-		// TODO Auto-generated method stub
-		return null;
+		return "Eating "+ super.getName();
 	}
 
 	@Override
 	public String toString() {
-		return "Drink "+name+" "+ volume/10 + " cl "+price +" kr ";
+		return "Drink "+super.getName()+" "+ volume/10 + " cl "+super.getPrice() +" kr ";
 	}
 	
 	

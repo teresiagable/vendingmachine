@@ -13,15 +13,10 @@ public interface I_VendingMachine {
 	 */
 	int getAmount();
 	
-	/**
-	 * @return and array of ints 
-	 */
-	int[] getChange();
-	
 	void listProducts();
-	boolean purchase(Product thing, MoneyPool money);
-	String examine(Product thing);
-	String use(Product thing);
+	boolean purchase(Product prod);
+	String examine(Product prod);
+	String use(Product prod);
 	
 	
 	
