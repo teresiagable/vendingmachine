@@ -21,7 +21,7 @@ public class App {
 
 		System.out.println("Welcome to the Vending machine!");
 
-		theVM.listProducts();
+		theManager.listProducts();
 		boolean continueShopping = true;
 
 		while (continueShopping) {
@@ -55,6 +55,7 @@ public class App {
 	private static int printAndGetMenuChoice(VendingMachine theVM) {
 
 		System.out.println("------------------");
+		System.out.println("0. List products");
 		System.out.println("1. Insert money");
 		System.out.println("2. Purchase");
 		System.out.println("3. Examine");
@@ -65,17 +66,6 @@ public class App {
 		return HelpMe.readIntegerfromUser();
 
 	}
-
-//	public static int readIntegerfromUser() {
-//		try {
-//			System.out.println("Enter a number: ");
-//			String input = scanner.nextLine();
-//			return Integer.parseInt(input);
-//		} catch (NumberFormatException e) {
-//			System.out.println("Not a valid number");
-//			return readIntegerfromUser();
-//		}
-//	}
 
 
 	private static Product[] getCurrentProducts() {
