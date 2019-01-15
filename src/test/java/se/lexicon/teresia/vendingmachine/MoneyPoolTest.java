@@ -17,10 +17,12 @@ public class MoneyPoolTest {
 	}
 	
 	@Test
-	public void check_insert_amount_() {
+	public void check_insert_remove_amount_() {
 		MoneyPool myMoney = new MoneyPool();
 		myMoney.addAmount(22);
 		assertEquals(22, myMoney.getAmount());
+		
+		myMoney.removeAmount(10);
+		assertEquals(12, myMoney.getAmount());
 	}
-	
 }

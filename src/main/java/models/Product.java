@@ -39,4 +39,6 @@ public abstract class Product {
 	 */
 	public abstract String Use();
 	
+	public abstract String toString();
+	
 }

@@ -16,7 +16,7 @@ public class Drink extends Product {
 
 	@Override
 	public String Examine() {
-		String productData = super.getName() + " with " + taste + " " + (carbonated ? "carbonated" : "") + " "
+		String productData = "Drink: "+ super.getName() + " with " + taste + " " + (carbonated ? "carbonated" : "") + " "
 				+ volume / 10 + " cl " + "in " + packaging+" "+ super.getPrice() + " kr ";
 
 		return productData;
@@ -29,7 +29,7 @@ public class Drink extends Product {
 
 	@Override
 	public String toString() {
-		return "Drink " + super.getName() + " " + volume / 10 + " cl " + super.getPrice() + " kr ";
+		return super.getName() + " " + volume / 10 + " cl " + super.getPrice() + " kr ";
 	}
 
 }

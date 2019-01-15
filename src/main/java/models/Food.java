@@ -6,8 +6,6 @@ public class Food extends Product
 	private String taste;
 	private int weight;
 
-	
-
 	/**
 	 * @param id an int
 	 * @param name 
@@ -23,25 +21,9 @@ public class Food extends Product
 		this.weight = weight;
 	}
 
-	public String getFoodtype() {
-		return foodtype;
-	}
-
-	public void setFoodtype(String foodtype) {
-		this.foodtype = foodtype;
-	}
-
-	public int getWeight() {
-		return weight;
-	}
-
-	public void setWeight(int weight) {
-		this.weight = weight;
-	}
-
 	@Override
 	public String Examine() {
-		String productData = super.getName() + " (" + foodtype + ") with "+ taste + " " + weight + " g in " + super.getPrice() + " kr ";
+		String productData = "Food: "+ super.getName() + " (" + foodtype + ") with "+ taste + " " + weight + " g " + super.getPrice() + " kr ";
 		return productData;
 	}
 
@@ -52,7 +34,7 @@ public class Food extends Product
 
 	@Override
 	public String toString() {
-		return "Food " + super.getName() + " " + weight + " g " + super.getPrice() + " kr ";
+		return super.getName() + " " + weight + " g " + super.getPrice() + " kr ";
 	}
 
 }

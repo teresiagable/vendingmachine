@@ -2,11 +2,12 @@ package Utils;
 
 import java.util.Scanner;
 
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 public class HelpMe {
 
 	private static Scanner scanner = new Scanner(System.in);
 
-	
 	public static int readIntegerfromUser() {
 		try {
 			System.out.println("Enter a number: ");
@@ -17,7 +18,7 @@ public class HelpMe {
 			return readIntegerfromUser();
 		}
 	}
-	
+
 	public static int readIntegerfromUser(String question) {
 		try {
 			System.out.println(question);
@@ -31,9 +32,9 @@ public class HelpMe {
 
 	/**
 	 * @param String question to be shown on the screen
-	 * @param int min value (inclusive)
-	 * @param int max value (inclusive)
-	 *  
+	 * @param        int min value (inclusive)
+	 * @param        int max value (inclusive)
+	 * 
 	 * @return
 	 */
 	public static int readIntegerfromUser(String question, int min, int max) {
@@ -50,12 +51,11 @@ public class HelpMe {
 			return readIntegerfromUser(question, min, max);
 		}
 	}
-	
+
 	/**
 	 * @param String question to be shown on the screen
-	 * @param int min value (inclusive)
-	 * @param int max value (inclusive)
-	 *  
+	 * @param        int[] validInts an array of valid ints
+	 * 
 	 * @return
 	 */
 	public static int readIntegerfromUser(String question, int[] validInts) {
@@ -63,13 +63,19 @@ public class HelpMe {
 			System.out.println(question);
 			String input = scanner.nextLine();
 			int theInt = Integer.parseInt(input);
-			for (int i = 0; i < validInts.length; i++) {
-				if(theInt == validInts[i]) return theInt;
+			for (int i : validInts) {
+				if (theInt == i)
+					return theInt;
 			}
 			throw new NumberFormatException();
 		} catch (NumberFormatException e) {
-			System.out.println("Not a valid number");
-			return readIntegerfromUser(question,  validInts);
+			System.out.print("Not a valid number. Valid numbers are: ");
+			for (int i : validInts) {
+				System.out.print(" " + i + " ");
+			}
+			System.out.println("");
+			;
+			return readIntegerfromUser(question, validInts);
 		}
 	}
 

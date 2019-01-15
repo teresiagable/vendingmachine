@@ -15,7 +15,7 @@ public class Candy extends Product {
 
 	@Override
 	public String Examine() {
-		String productData = super.getName() + " " + taste + " " + weight + " g in " + packaging + " "
+		String productData = "Candy: " + super.getName() + " " + taste + " " + weight + " g in " + packaging + " "
 				+ super.getPrice() + " kr ";
 
 		return productData;
@@ -23,12 +23,12 @@ public class Candy extends Product {
 
 	@Override
 	public String Use() {
-		return "Eating " + super.getName()+ " *nom nom*";
+		return "Eating " + super.getName() + " *nom nom*";
 	}
 
 	@Override
 	public String toString() {
-		return "Candy " + super.getName() + " " + weight + " g :" + super.getPrice() + " kr ";
+		return super.getName() + " " + weight + " g " + super.getPrice() + " kr ";
 	}
 
 }

@@ -3,14 +3,14 @@ package services;
 import models.Product;
 
 public class VendingMachine implements I_VendingMachine {
-	public MoneyPool myMoney = new MoneyPool();
-	public Product[] theProducts = new Product[0];
+	private MoneyPool myMoney = new MoneyPool();
+	private Product[] theProducts = new Product[0];
 
-	public VendingMachine(MoneyPool myMoney, Product[] theProducts) {
+	public VendingMachine(Product[] theProducts) {
 		super();
-		this.myMoney = myMoney;
 		this.theProducts = theProducts;
 	}
+
 
 	@Override
 	public int insertMoney(int money) {
@@ -23,27 +23,49 @@ public class VendingMachine implements I_VendingMachine {
 		return myMoney.getAmount();
 	}
 
+	public void setAmount(int amount) {
+		myMoney.setAmount(amount);
+	}
+	
 	@Override
 	public void listProducts() {
 		for (Product product : theProducts) {
 			System.out.println(product.getId() + " " + product.toString());
 		}
+	}
 
+	public int[] getProductIds() {
+		int[] idArray = new int[theProducts.length];
+		int i = 0;
+		for (Product product : theProducts) {
+
+			idArray[i] = product.getId();
+			i++;
+		}
+		return idArray;
+	}
+
+	public Product getProductById(int id) {
+		for (Product product : theProducts) {
+			if (product.getId() == id)
+				return product;
+		}
+		return null;
 	}
 
 	@Override
 	public boolean purchase(Product prod) {
-		int price = prod.getPrice();
 
+		int price = prod.getPrice();
 		if (this.myMoney.getAmount() >= price) {
-			//ask the to the machine to release the product into the "fetch box"
-			
-			//update the moneypool
+			// ask the to the machine to release the product into the "fetch box"
+
+			// update the moneypool
 			this.myMoney.removeAmount(price);
 			return true;
 		} else
 			System.out.println("Not enought money. Insert more.");
-			return false;
+		return false;
 	}
 
 	@Override
@@ -57,5 +79,7 @@ public class VendingMachine implements I_VendingMachine {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }
