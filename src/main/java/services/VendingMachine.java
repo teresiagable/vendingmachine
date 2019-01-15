@@ -1,4 +1,6 @@
-package se.lexicon.teresia.vendingmachine;
+package services;
+
+import models.Product;
 
 public class VendingMachine implements I_VendingMachine {
 	public MoneyPool myMoney = new MoneyPool();

@@ -1,4 +1,6 @@
-package se.lexicon.teresia.vendingmachine;
+package services;
+
+import models.Product;
 
 public interface I_VendingMachine {
 

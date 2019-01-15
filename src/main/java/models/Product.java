@@ -1,4 +1,4 @@
-package se.lexicon.teresia.vendingmachine;
+package models;
 
 public abstract class Product {
 	private int id;
