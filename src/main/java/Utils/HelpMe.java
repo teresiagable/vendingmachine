@@ -21,7 +21,8 @@ public class HelpMe {
 
 	public static int readIntegerfromUser(String question) {
 		try {
-			System.out.println(question);
+			if (question != null)
+				System.out.println(question);
 			String input = scanner.nextLine();
 			return Integer.parseInt(input);
 		} catch (NumberFormatException e) {
@@ -39,7 +40,8 @@ public class HelpMe {
 	 */
 	public static int readIntegerfromUser(String question, int min, int max) {
 		try {
-			System.out.println(question);
+			if (question != null)
+				System.out.println(question);
 			String input = scanner.nextLine();
 			int theInt = Integer.parseInt(input);
 			if (theInt < min && theInt > max) {
@@ -60,7 +62,8 @@ public class HelpMe {
 	 */
 	public static int readIntegerfromUser(String question, int[] validInts) {
 		try {
-			System.out.println(question);
+			if (question != null)
+				System.out.println(question);
 			String input = scanner.nextLine();
 			int theInt = Integer.parseInt(input);
 			for (int i : validInts) {
@@ -74,7 +77,7 @@ public class HelpMe {
 				System.out.print(" " + i + " ");
 			}
 			System.out.println("");
-			;
+			
 			return readIntegerfromUser(question, validInts);
 		}
 	}

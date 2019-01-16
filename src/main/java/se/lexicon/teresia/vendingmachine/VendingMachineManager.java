@@ -48,6 +48,7 @@ public class VendingMachineManager {
 	public void cashOut() {
 		int cash = theVM.getAmount();
 		theVM.setAmount(0);
+				
 		for (Denomination d : Denomination.values()) {
 			if (d.countCoins(cash) > 0)
 				System.out.println(d.countCoins(cash) + " st " + d.getValue() + " kr");

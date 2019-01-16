@@ -19,24 +19,24 @@ public class App {
 			int menuChoice = printAndGetMenuChoice(theManager.getAmount());
 
 			switch (menuChoice) {
-			case 0:
+			case 1:
 				theManager.listProducts();
 				break;
-			case 1:
+			case 2:
 				theManager.insertMoney();
 				break;
-			case 2:
+			case 3:
 				Product prod = theManager.doPurchase();
 				if (prod != null)
 					theManager.doUse(prod);
 				break;
-			case 3:
+			case 4:
 				theManager.doExamine();
 				break;
-			case 4:
+			case 5:
 				theManager.cashOut();
 				break;
-			case 5:
+			case 6:
 				theManager.leave();
 				break;
 			default:
@@ -48,15 +48,15 @@ public class App {
 	private static int printAndGetMenuChoice(int moneyAmount) {
 
 		System.out.println("------------------");
-		System.out.println("0. List products");
-		System.out.println("1. Insert money");
-		System.out.println("2. Purchase");
-		System.out.println("3. Examine");
-		System.out.println("4. Cash out");
-		System.out.println("5. Leave");
+		System.out.println("1. List products");
+		System.out.println("2. Insert money");
+		System.out.println("3. Purchase");
+		System.out.println("4. Examine");
+		System.out.println("5. Cash out");
+		System.out.println("6. Leave");
 		System.out.println("Money inserted: " + moneyAmount);
 
-		return HelpMe.readIntegerfromUser();
+		return HelpMe.readIntegerfromUser(null,1,6);
 
 	}
 
