@@ -15,6 +15,10 @@ public class VendingMachineManager {
 	}
 
 	public void insertMoney() {
+
+		  String valueString =HelpMe.intArrayToString(theVM.getDenominationValues());
+
+
 		theVM.insertMoney(HelpMe.readIntegerfromUser("How much money do you want to insert?"));
 	}
 
@@ -26,8 +30,8 @@ public class VendingMachineManager {
 		boolean succeeded = theVM.purchase(theP);
 		return (succeeded ? theP : null);
 
-	}
-
+	}	
+	
 	public void doUse(Product prod) {
 		System.out.println("Do you want to open the " + prod.getName() + "?");
 		boolean use = HelpMe.readYesNoFromUser();

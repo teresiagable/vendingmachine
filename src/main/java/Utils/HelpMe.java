@@ -2,8 +2,6 @@ package Utils;
 
 import java.util.Scanner;
 
-import javax.swing.text.StyledEditorKit.ForegroundAction;
-
 public class HelpMe {
 
 	private static Scanner scanner = new Scanner(System.in);
@@ -103,6 +101,11 @@ public class HelpMe {
 			break;
 		}
 		return returnValue;
+	}
+
+	public static String intArrayToString(int[] denominationValues) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

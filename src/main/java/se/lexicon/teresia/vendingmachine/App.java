@@ -12,9 +12,8 @@ public class App {
 		System.out.println("Welcome to the Vending machine!");
 
 		theManager.listProducts();
-		boolean continueShopping = true;
 
-		while (continueShopping) {
+		while (true) {
 
 			int menuChoice = printAndGetMenuChoice(theManager.getAmount());
 

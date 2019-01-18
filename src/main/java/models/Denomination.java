@@ -24,6 +24,7 @@ public enum Denomination {
 	public int getValue() {
 		return this.value;
 	}	
+
 	public int getValueByIndex(int index) {
 		return this.value;
 	}	

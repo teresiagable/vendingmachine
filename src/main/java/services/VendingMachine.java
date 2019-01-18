@@ -1,5 +1,6 @@
 package services;
 
+import models.Denomination;
 import models.Product;
 
 public class VendingMachine implements I_VendingMachine {
@@ -30,7 +31,7 @@ public class VendingMachine implements I_VendingMachine {
 	@Override
 	public void listProducts() {
 		for (Product product : theProducts) {
-			System.out.println(product.getId() + " " + product.toString());
+			System.out.println(product.getId() + " " + product);
 		}
 	}
 
@@ -78,6 +79,19 @@ public class VendingMachine implements I_VendingMachine {
 	public String use(Product thing) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	public int[] getDenominationValues() {
+	
+		int[] denoms = new int[Denomination.values().length];
+		int i=0;
+		for (Denomination d : Denomination.values()) {
+			denoms[i]= d.getValue();
+			i++;
+		}
+		return denoms;
+		
 	}
 
 
